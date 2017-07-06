@@ -10,12 +10,8 @@
 1.数据预处理 
 1)共病
 首先利用pandas读取如下图所示的MIMICIII数据集中的病人确诊信息表的病人id和患病确诊的ICD9国际疾病编码信息。
-
-7	DIAGNOSES_ICD	提供病人ICD确诊信息	SUBJECT_ID	
-			HADM_ID	
-			ICD9_CODE	国际疾病分类系统码
-
 代码片段：
+```
 def get_data(dataset):
      same_data={}
      list=set()
@@ -51,7 +47,7 @@ for i in list:
         for i in value_list:
             value_list.remove(i)
 print u'集合项写入完毕，请打开文件查看-----'
-
+```
 在读取完所有病人的患病信息后，将病人的subject_id字段和患病信息存到文档中，最终得到数据集中四万个病人的患病信息。如下图所示：
 2:V3001 V053   V290   
 3:V053 0389   78559  5849   4275   41071  4280   6826   4254   2639   
@@ -62,7 +58,7 @@ print u'集合项写入完毕，请打开文件查看-----'
 8:V3000    9972   2753   V053   V3001  7706   7746   V290   V502   V053   
 9:9972 V053   7706   V290   V053   431    5070   4280   5849   2765   4019   
 10:V290    V053   431    4280   2765   V3000  7742   76525  76515  V290   
-前十个病人患病信息
+
 
 
 2)症状分布
@@ -70,7 +66,7 @@ print u'集合项写入完毕，请打开文件查看-----'
 得到疾病病症位于TEXT中关键词Chief Complaint:后，于是根据所处位置进行单独疾病病症的数据抽取。得到每个所需抽取的疾病号对应的病症
 因为部分Chief Complaint:后为空，导致抽取到了一些非疾病病症的词，且这些词出现的比较集中，于是通过直接在结果TXT中进行特定高频词的匹配删除，将非疾病病症词去除，部分极少出现的非疾病病症词频率极小，不影响最后结果所以不进行考虑。
 得到删除后的纯疾病病症TXT表。
-
+```
 file = open("/home/xu/下载/NewBZ42731")
 r = re.compile(r"\,\s+")
 
@@ -94,7 +90,7 @@ df['percent'] = df['count']/df['count'].max()
 df.to_csv("42731.csv")
 # 打印前5
 print(df.head(5))
-
+```
 3)时间年龄分布
 在进行分布规律的预处理时，首先确定分布规律的包含范围：性别分布和年龄分布。再根据mimic数据库的说明找到所需要使用的csv表格，根据主键进行合并，得到最后的表格。
 
@@ -106,6 +102,7 @@ print(df.head(5))
 本次实验采用的是改进的opriori算法，也就是生成树的算法，参考《机器学习实战》的关联分析章节部分的算法，其基本思想是构建频繁项集的生成树来表示数据集中的关联规则关系和关联关系的强度。
 
 生成树算法代码片段：
+```
 # 定义一个树，保存树的每一个结点
 class treeNode:
     def __init__(self, nameValue, numOccur, parentNode):
@@ -244,9 +241,10 @@ def fpGrowth(dataSet, minSup=3):
     mineTree(myFPtree, myHeaderTab, minSup, set([]), freqItems)
     return freqItems
 
-
+```
 测试：
 测试算法主要是将存有病人患病信息的数据部分作为测试集，生成FP-growth生成树：
+```
 parsedDat = [line.split(':')[1].split() for line in open('opriori.txt').readlines()]
 #print parsedDat
 
@@ -272,7 +270,7 @@ for freqItem in myFreqList:
 for item in myHeaderTab.values():
     item.remove(item[1])
 
-
+```
 文字表示的生成树：
 conditional tree for : set(['2724'])
    Null Set    1
@@ -315,7 +313,7 @@ conditional tree for : set(['41401'])
 
 2）疾病症状 徐炳基
 根据疾病编码进行单个疾病病症的词频统计以及每个词与最高频率词的比较百分比，只显示出最高频的5个词。
-
+```
 def get_symptom(name):
     data=pd.read_csv('/home/zz/Desktop/PycharmProjects/xinxixitong/Symptom/{}.csv'.format(name))
     print data.columns
@@ -324,10 +322,11 @@ def get_symptom(name):
     for item in data_list:
         item[1]=str(name)
     return data_list
-
+```
 3）分布规律 陈思凯
 分布规律：
-	分布规律的实质是统计某个限制条件下病人的数量，以得到相应的分布规律。在这种情形下，只需要将之前预处理的表格进行过滤，统计数量即可。
+分布规律的实质是统计某个限制条件下病人的数量，以得到相应的分布规律。在这种情形下，只需要将之前预处理的表格进行过滤，统计数量即可。
+```
 import csv
 with open('data2.csv','rb') as csvfile:
     reader = csv.DictReader(csvfile)
@@ -339,11 +338,12 @@ with open('data2.csv','rb') as csvfile:
             count += 1
             
     print count
-
+```
 3.可视化界面
 1）结果可视化 章震 
 
 共病关系和症状分布可视化代码：
+```
 def common_disease(name=4019):
     edges1 = []
     edges2=[]
@@ -393,13 +393,14 @@ def common_disease(name=4019):
 
     plt.savefig('symptom.png')
 
-
+```
 共病全关系图
 		
 
 共病关系和症状分布图
 
-时间年龄分布代码
+时间年龄分布代码：
+```
 def distribution(name,sex,age1=10,age2=100):
     age_list=[]
     with open('/home/zz/Desktop/PycharmProjects/xinxixitong/distribution/info.csv','rb') as csvfile:
@@ -429,13 +430,15 @@ def distribution(name,sex,age1=10,age2=100):
                 # plt.show()
     plt.savefig('distribution.png')
 
-
+```
 年龄性别分布图
+
 2）界面UI设计  王子叶
 （1）登录界面
 功能：输入正确的用户名和密码，即可进入系统
 实现：新建一个QWidget，在其中添加标签QLabel、按钮QPushButton、用户名及密码输入框QLineEdit，将其合理布局，尽量使其美观。并在按钮中添加事件，使得输入正确的用户名和密码可进入系统。
 代码：
+```
  '''登录界面
 
         '''
@@ -495,7 +498,7 @@ def distribution(name,sex,age1=10,age2=100):
 "color: rgb(255, 255, 255);\n"
 ""))
         self.loginButton.setObjectName(_fromUtf8("loginButton"))
-
+```
 结果：
 
 
@@ -503,7 +506,7 @@ def distribution(name,sex,age1=10,age2=100):
 功能：提供系统的使用说明，方便用户使用
 实现：新建一个QWidget，在其中添加标签QLabel、按钮QPushButton，将其合理布局，尽量使其美观。并在按钮中添加事件，使得点击按钮可以进入分布界面。
 代码：
-'''疾病界面
+```疾病界面
         '''
         self.Disease = QtGui.QFrame(self.Distribution)
         self.Disease.setGeometry(QtCore.QRect(0, 0, 1150, 650))
@@ -555,7 +558,7 @@ def distribution(name,sex,age1=10,age2=100):
 "color: rgb(255, 255, 255);"))
         self.backButton1.setObjectName(_fromUtf8("backButton1"))
 #-----------------------------------------------------------------
-
+```
 结果：
 
 
@@ -564,6 +567,7 @@ def distribution(name,sex,age1=10,age2=100):
 功能：查看疾病的共病、症状以及年龄性别分布等，并提供交互式查询
 实现：新建一个QWidget，在其中添加标签QLabel、按钮QPushButton、输入框QLineEdit等，将其合理布局，尽量使其美观。考虑到性别分布无非分男、女和全部，所以采用了单选按钮QRadioButton；年龄分布的选择较多，所以采用了输入查询的形式。性别分布与年龄分布支持交叉查询。
 代码：
+```
 
         '''分布界面
         '''
@@ -681,4 +685,4 @@ def distribution(name,sex,age1=10,age2=100):
 #----------------------------------------------------------------
 
 结果：
-
+```
