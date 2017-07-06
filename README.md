@@ -397,10 +397,11 @@ def common_disease(name=4019):
 
 ```
 共病全关系图
-https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/Common_disease/allrelation.png		
+![]（https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/Common_disease/allrelation.png）		
 
 共病关系和症状分布图
-
+![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/ui/disease.png)
+![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/ui/distribution.png)
 时间年龄分布代码：
 ```python
 def distribution(name,sex,age1=10,age2=100):
@@ -433,7 +434,7 @@ def distribution(name,sex,age1=10,age2=100):
     plt.savefig('distribution.png')
 
 ```
-年龄性别分布图
+
 
 2）界面UI设计  王子叶
 （1）登录界面
@@ -501,7 +502,7 @@ def distribution(name,sex,age1=10,age2=100):
 ""))
         self.loginButton.setObjectName(_fromUtf8("loginButton"))
 ```
-结果：
+
 
 
 （2）使用说明界面
@@ -562,7 +563,6 @@ def distribution(name,sex,age1=10,age2=100):
         self.backButton1.setObjectName(_fromUtf8("backButton1"))
 #-----------------------------------------------------------------
 ```
-结果：
 
 
 
@@ -687,5 +687,4 @@ def distribution(name,sex,age1=10,age2=100):
 
 #----------------------------------------------------------------
 
-结果：
-```
+
