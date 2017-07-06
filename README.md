@@ -409,8 +409,8 @@ def common_disease(name=4019):
 ![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/Common_disease/allrelation.png)		
 
 共病关系和症状分布图
-![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/ui/disease.png)
 
+![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/ui/disease.png)
 ![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/ui/symptom.png)
 
 时间年龄分布代码：
