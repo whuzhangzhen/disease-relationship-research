@@ -1,0 +1,62 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module FP_Tree</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>FP_Tree</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/zz/Documents/xinxixitong/Common_disease/FP_Tree.py">/home/zz/Documents/xinxixitong/Common_disease/FP_Tree.py</a></font></td></tr></table>
+    <p><tt>Created&nbsp;on&nbsp;2016年5月9日<br>
+@author:&nbsp;Gamer&nbsp;Think</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="FP_Tree.html#treeNode">treeNode</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="treeNode">class <strong>treeNode</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>#&nbsp;定义一个树，保存树的每一个结点<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="treeNode-__init__"><strong>__init__</strong></a>(self, nameValue, numOccur, parentNode)</dt></dl>
+
+<dl><dt><a name="treeNode-disp"><strong>disp</strong></a>(self, ind<font color="#909090">=1</font>)</dt><dd><tt>#&nbsp;用于将树以文本形式显示，对于构建树来说并不是需要的</tt></dd></dl>
+
+<dl><dt><a name="treeNode-inc"><strong>inc</strong></a>(self, numOccur)</dt><dd><tt>#&nbsp;对count变量增加给定值</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-ascendTree"><strong>ascendTree</strong></a>(leafNode, prefixPath)</dt><dd><tt>#&nbsp;辅助函数，直接修改prefixPath的值，将当前节点leafNode添加到prefixPath的末尾，然后递归添加其父节点</tt></dd></dl>
+ <dl><dt><a name="-createInitSet"><strong>createInitSet</strong></a>(dataSet)</dt></dl>
+ <dl><dt><a name="-createTree"><strong>createTree</strong></a>(dataSet, minSup<font color="#909090">=1</font>)</dt><dd><tt>创建FP树</tt></dd></dl>
+ <dl><dt><a name="-findPrefixPath"><strong>findPrefixPath</strong></a>(basePat, treeNode)</dt><dd><tt>#&nbsp;给定元素项生成一个条件模式基（前缀路径）<br>
+#&nbsp;basePat表示输入的频繁项，<a href="#treeNode">treeNode</a>为当前FP树中对应的第一个节点（可在函数外部通过headerTable[basePat][1]获取）</tt></dd></dl>
+ <dl><dt><a name="-fpGrowth"><strong>fpGrowth</strong></a>(dataSet, minSup<font color="#909090">=3</font>)</dt><dd><tt>#&nbsp;封装算法</tt></dd></dl>
+ <dl><dt><a name="-loadSimpDat"><strong>loadSimpDat</strong></a>()</dt><dd><tt>#&nbsp;生成数据集</tt></dd></dl>
+ <dl><dt><a name="-mineTree"><strong>mineTree</strong></a>(inTree, headerTable, minSup, preFix, freqItemList)</dt><dd><tt>#&nbsp;参数：inTree和headerTable是由<a href="#-createTree">createTree</a>()函数生成的数据集的FP树<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;minSup表示最小支持度<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;：preFix请传入一个空集合（set([])），将在函数中用于保存当前前缀<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;：freqItemList请传入一个空列表（[]），将用来储存生成的频繁项集</tt></dd></dl>
+ <dl><dt><a name="-updateHeader"><strong>updateHeader</strong></a>(nodeToTest, targetNode)</dt></dl>
+ <dl><dt><a name="-updateTree"><strong>updateTree</strong></a>(items, inTree, headerTable, count)</dt></dl>
+</td></tr></table>
+</body></html>
