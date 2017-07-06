@@ -1,12 +1,18 @@
 # 基于mimiciii数据集的疾病共病分布系统
-
+1.开发环境：
 硬件环境：dell inspriation 7447 
+
 软件环境：ubuntu 16.04系统
+
 开发工具：pycharm社区版+vim+git
+
 开发语言：python2.7
+
 开发第三方库：pip包管理器+matplotlib+networkx+pandas+pyqt4
-1.数据预处理 
-1)共病
+
+2.开发过程：
+
+
 1.数据预处理 
 1)共病
 首先利用pandas读取如下图所示的MIMICIII数据集中的病人确诊信息表的病人id和患病确诊的ICD9国际疾病编码信息。
@@ -404,8 +410,11 @@ def common_disease(name=4019):
 
 共病关系和症状分布图
 ![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/ui/disease.png)
+
 ![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/ui/symptom.png)
+
 时间年龄分布代码：
+
 ```python
 def distribution(name,sex,age1=10,age2=100):
     age_list=[]
@@ -438,6 +447,7 @@ def distribution(name,sex,age1=10,age2=100):
 
 ```
 年龄性别分布图：
+
 ![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/ui/distribution.png)
 
 
