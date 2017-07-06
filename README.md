@@ -10,7 +10,9 @@
 1.数据预处理 
 1)共病
 首先利用pandas读取如下图所示的MIMICIII数据集中的病人确诊信息表的病人id和患病确诊的ICD9国际疾病编码信息。
+
 代码片段：
+
 ```python
 def get_data(dataset):
      same_data={}
@@ -63,6 +65,7 @@ print u'集合项写入完毕，请打开文件查看-----'
 
 
 2)症状分布
+
 从csv文件DIAGNOSES_ICD_DATA_TABLE中以ICD9_CODE为索引数字匹配相应的疾病编码SUBJECT_ID。再根据匹配得到SUBJECT_ID在另一个csv文件NOTEEVENTS_DATA_TABLE中匹配相应的疾病病症。因为文件NOTEEVENTS_DATA_TABLE无法直接打开，且只知道病症位于该文件的TEXT列中，于是先对TEXT列进行抽取观察疾病病症所处位置。
 得到疾病病症位于TEXT中关键词Chief Complaint:后，于是根据所处位置进行单独疾病病症的数据抽取。得到每个所需抽取的疾病号对应的病症
 因为部分Chief Complaint:后为空，导致抽取到了一些非疾病病症的词，且这些词出现的比较集中，于是通过直接在结果TXT中进行特定高频词的匹配删除，将非疾病病症词去除，部分极少出现的非疾病病症词频率极小，不影响最后结果所以不进行考虑。
@@ -397,11 +400,11 @@ def common_disease(name=4019):
 
 ```
 共病全关系图
-![]（https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/Common_disease/allrelation.png）		
+![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/Common_disease/allrelation.png)		
 
 共病关系和症状分布图
 ![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/ui/disease.png)
-![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/ui/distribution.png)
+![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/ui/symptom.png)
 时间年龄分布代码：
 ```python
 def distribution(name,sex,age1=10,age2=100):
@@ -434,13 +437,15 @@ def distribution(name,sex,age1=10,age2=100):
     plt.savefig('distribution.png')
 
 ```
+年龄性别分布图：
+![](https://github.com/whuzhangzhen/xinxixitongshiyan/blob/master/ui/distribution.png)
 
 
 2）界面UI设计  王子叶
 （1）登录界面
 功能：输入正确的用户名和密码，即可进入系统
 实现：新建一个QWidget，在其中添加标签QLabel、按钮QPushButton、用户名及密码输入框QLineEdit，将其合理布局，尽量使其美观。并在按钮中添加事件，使得输入正确的用户名和密码可进入系统。
-代码：
+
 ```python
  '''登录界面
 
@@ -508,6 +513,7 @@ def distribution(name,sex,age1=10,age2=100):
 （2）使用说明界面
 功能：提供系统的使用说明，方便用户使用
 实现：新建一个QWidget，在其中添加标签QLabel、按钮QPushButton，将其合理布局，尽量使其美观。并在按钮中添加事件，使得点击按钮可以进入分布界面。
+
 代码：
 ```python
 疾病界面
