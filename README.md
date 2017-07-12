@@ -1,5 +1,32 @@
-# 基于mimiciii数据集的疾病共病分布系统
+# 基于mimiciii数据集的疾病共病分布系统（linux unix下only）
+
+
+配置过程：
+1）下载整个软件包：
+下载地址：https://github.com/whuzhangzhen/xinxixitongshiyan
+2）安装包管理器pip
+终端输入
+```
+wget https://bootstrap.pypa.io/get-pip.py  --no-check-certificate
+```
+3）安装各种第三方库
+pandas:
+```
+sudo pip install pandas
+```
+matplotlib:
+```
+sudo pip install matplotlib
+```
+networkx
+```
+sudo pip install networkx
+```
+pyqt4
+参考博客：http://www.cnblogs.com/jackge/archive/2013/06/05/3119130.html
+
 1.开发环境：
+
 硬件环境：dell inspriation 7447 
 
 软件环境：ubuntu 16.04系统
