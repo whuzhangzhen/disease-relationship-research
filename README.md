@@ -1,9 +1,12 @@
 # 基于mimiciii数据集的疾病共病分布系统（linux unix下only）
 
 
-配置过程：
+配置安装：
+
 1）下载整个软件包：
+
 下载地址：https://github.com/whuzhangzhen/xinxixitongshiyan
+
 2）安装包管理器pip
 终端输入
 ```
@@ -22,8 +25,23 @@ networkx
 ```
 sudo pip install networkx
 ```
+numpy
+```
+sudo pip install networkx
+```
+
 pyqt4
+
 参考博客：http://www.cnblogs.com/jackge/archive/2013/06/05/3119130.html
+
+4）运行：
+本地IDE打开整个软件包：
+
+运行ui子文件夹下面的test_login.py文件即可
+
+终端在ui文件夹路径下：
+
+输入  python  test_login.py 即可
 
 1.开发环境：
 
